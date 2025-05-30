@@ -25,7 +25,7 @@ class calculator {
     }
 
     void optionInput() {
-        cout << "Enter option (1 or +, etc): ";
+        cout << "Enter option (1,2 or +, x etc): ";
         cin >> option;
         cout << endl;
     }
@@ -39,9 +39,9 @@ class calculator {
             int result = number_one - number_two;
             cout << number_one << " - " << number_two << " = " << result << endl;
         }
-        else if(option == "3" || option == "*") {
+        else if(option == "3" || option == "x") {
             int result = number_one * number_two;
-            cout << number_one << " * " << number_two << " = " << result << endl;
+            cout << number_one << " x " << number_two << " = " << result << endl;
         }
         else if(option == "4" || option == "/") {
             int result = number_one / number_two;
