@@ -1,49 +1,56 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class ToDoList
 {
 private:
-    string message, askoption;
+    vector<string> tasks;
+    string askoption;
 
 public:
+    void mainmenu()
+    {
+        string message;
+        cout << "Enter task to add in To-do List: ";
+        cin.ignore(); 
+        getline(cin, message);
+        tasks.push_back(message);
+    }
+
     void display()
     {
-        mainmenu();
         cout << endl
              << "------------To-do-List------------" << endl;
         cout << endl
              << "----------------------------------" << endl;
         cout << "\tYour Tasks: " << endl;
-        cout << "\t1. " << message << endl;
-        cout << endl
-             << "----------------------------------" << endl;
-    }
-    void mainmenu()
-    {
-        cout << "Enter task to add in To-do List: ";
-        getline(cin, message);
-    }
-    void ask()
-    {
-        cout << "\nWant to Add more Task? or Want to Exit? ";
-        cin >> askoption;
 
-        if (askoption == "add" || "ADD")
+        for (size_t i = 0; i < tasks.size(); ++i)
         {
+            cout << "\t" << (i + 1) << ". " << tasks[i] << endl;
+        }
+
+        cout << "----------------------------------" << endl;
+    }
+
+    void run()
+    {
+        do
+        {
+            mainmenu();
             display();
-        }
-        else if (askoption == "exit" || askoption == "EXIT")
-        {
-            return;
-        }
+
+            cout << "\nWant to Add more Task? (add/exit): ";
+            cin >> askoption;
+
+        } while (askoption == "add" || askoption == "ADD");
     }
 };
 
 int main()
 {
     ToDoList TDL;
-    TDL.display();
-    TDL.ask();
+    TDL.run();
     return 0;
 }
