@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class ToDoList
+{
+private:
+    string message, askoption;
+
+public:
+    void display()
+    {
+        mainmenu();
+        cout << endl
+             << "------------To-do-List------------" << endl;
+        cout << endl
+             << "----------------------------------" << endl;
+        cout << "\tYour Tasks: " << endl;
+        cout << "\t1. " << message << endl;
+        cout << endl
+             << "----------------------------------" << endl;
+    }
+    void mainmenu()
+    {
+        cout << "Enter task to add in To-do List: ";
+        getline(cin, message);
+    }
+    void ask()
+    {
+        cout << "\nWant to Add more Task? or Want to Exit? ";
+        cin >> askoption;
+
+        if (askoption == "add" || "ADD")
+        {
+            display();
+        }
+        else if (askoption == "exit" || askoption == "EXIT")
+        {
+            return;
+        }
+    }
+};
+
+int main()
+{
+    ToDoList TDL;
+    TDL.display();
+    TDL.ask();
+    return 0;
+}
